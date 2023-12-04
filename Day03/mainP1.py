@@ -35,11 +35,23 @@ def part1():
           # Number ended, look around for specific patterns
 
           # Look left/right
+          #   j= 0 1 2 3 4 5 6 7 8 9
+          # i= 0 . . . . . . . . . .
+          #    1 . . . . . . . . . .
+          #    2 . . X _ _ _ X . . .
+          #    3 . . . . . . . . . .
+          #    4 . . . . . . . . . .
           if is_simbol(i, start-1) or is_simbol(i, j):
               ans += num
               continue
 
           # Look up/down and diagonally
+          #   j= 0 1 2 3 4 5 6 7 8 9
+          # i= 0 . . . . . . . . . .
+          #    1 . . X X X X X . . .
+          #    2 . . . _ _ _ . . . .
+          #    3 . . X X X X X . . .
+          #    4 . . . . . . . . . .
           for k in range(start-1, j+1):
               if is_simbol(i-1, k) or is_simbol(i+1, k):
                   ans += num
