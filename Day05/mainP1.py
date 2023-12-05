@@ -36,6 +36,5 @@ for block in blocks:
 
     # Update seeds with the results from res for the next iteration
     seeds = res
-
 # Print the minimum value in the final seeds list
 print(min(seeds))
