@@ -1,15 +1,3 @@
-"""
-def load_input(file_path):
-    with open(file_path, "r") as file:
-        instruction, *elements = file.read().strip().split("\n\n")
-        elements = elements[0].split("\n")
-        elements_dic = {key: val for key, val in [element.split(" = ") for element in elements]}
-
-    for key, val in elements_dic.items():
-        val1, val2 = val.strip("()").split(",")
-        elements_dic[key] = (val1.strip(), val2.strip())
-    return instruction, elements_dic
-"""
 def load_input(file_path):
     with open(file_path, "r") as file:
         instruction, *elements = map(str.strip, file.read().split("\n\n"))
@@ -19,24 +7,18 @@ def load_input(file_path):
     
     return instruction, elements_dic
 
-def zzz(val, my_dict):
-	return list(my_dict.keys()) [list(my_dict.values()).index(val)]
+count = 0
+current = "AAA"
 
-def required_steps(instruction, elements_dic):
-    idx, count = 0, 0
-    instruction += "//"
-    element = elements_dic.get(start)
+def required_steps(steps, elements_dic):
+    current = "AAA"
+    count = 0
+    
+    while current != "ZZZ":
+        count += 1
+        current = elements_dic[current][0 if steps[0] == 'L' else 1]
+        steps = steps[1:] + steps[0]
+    return count
 
-    while instruction[idx] != "//":
-        if zzz(element, elements_dic) == "ZZZ":
-            return count
-        
-        if instruction[idx] == "/":
-            idx = 0
-        else:
-            element = elements.get(element[0]) if instruction[idx] == "L" else elements.get(element[1])
-            idx , count = idx + 1, count + 1
-
-start = "AAA"
 instruction, elements = load_input("Data.txt")
 print(required_steps(instruction, elements))
