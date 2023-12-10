@@ -7,9 +7,6 @@ def load_input(file_path):
     
     return instruction, elements_dic
 
-count = 0
-current = "AAA"
-
 def required_steps(steps, elements_dic):
     current = "AAA"
     count = 0
