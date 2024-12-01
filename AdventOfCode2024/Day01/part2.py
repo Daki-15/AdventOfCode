@@ -5,7 +5,7 @@ def read_data(path):
 
     with open(path, "r") as data:
         for line in data:
-            l, r = line.strip().split()
+            l, r = map(int, line.strip().split())
 
             left.append(l)
 
@@ -15,7 +15,7 @@ def read_data(path):
                 right_count[r] = 1
 
         for l in left:
-            res += int(l) * right_count.get(l, 0)
+            res += l * right_count.get(l, 0)
 
     print(res)
 
